@@ -1,0 +1,53 @@
+- name: Languages
+  skills:
+      - TypeScript
+      - Python
+      - C#
+      - Java
+      - Go
+      - PHP
+      - SQL
+- name: Frontend
+  skills:
+      - React
+      - Next.js
+      - React Aria
+      - Redux
+      - Vite
+      - Rsbuild/Rspack
+- name: "Backend & Cloud"
+  skills:
+      - ASP.NET Core
+      - Spring Boot
+      - Node.js
+      - Express
+      - PostgreSQL
+      - AWS
+      - ECS
+      - Lambda
+      - Cognito
+      - CloudFormation
+      - Azure
+      - Docker
+- name: "DevOps, Security & Architecture"
+  skills:
+      - Git
+      - Bitbucket
+      - CI/CD
+      - IaC
+      - Clean Architecture
+      - REST APIs
+      - Microservices
+      - Multi-tenancy
+      - SAML/OIDC
+      - RBAC
+      - Automated Testing
+- name: Also used in projects
+  skills:
+      - FastAPI
+      - DeepFace
+      - Server-Sent Events
+      - GitHub Actions
+      - Laravel
+      - Livewire
+      - DigitalOcean

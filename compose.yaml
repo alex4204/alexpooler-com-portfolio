@@ -1,0 +1,10 @@
+# Development only (the live setup is compose.prod.yaml). Redis for Ask AI's
+# rate limits. Locally: `docker compose up -d redis`, then
+# set REDIS_URL=redis://localhost:6379 in .env.local.
+services:
+    redis:
+        image: redis:8-alpine
+        restart: unless-stopped
+        # Reachable from this machine only, never the network.
+        ports:
+            - "127.0.0.1:6379:6379"

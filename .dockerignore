@@ -1,0 +1,10 @@
+# Never send secrets, local builds or git history into the image.
+.env*
+!.env.example
+.git
+.next
+node_modules
+*.tsbuildinfo
+next-env.d.ts
+Dockerfile
+compose*.yaml

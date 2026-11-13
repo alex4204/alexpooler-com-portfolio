@@ -1,0 +1,22 @@
+# Watchtower, run once per server rather than once per site, so taking a
+# site down never stops updates for the others:
+#
+#     docker compose -f compose.watchtower.yaml up -d
+#
+# It sees every container on the machine, not just one project's, so a second
+# copy would race this one to update the same containers. Any site opts in by
+# labelling its container com.centurylinklabs.watchtower.enable=true.
+name: watchtower
+
+services:
+    watchtower:
+        image: containrrr/watchtower:1.7.1
+        restart: unless-stopped
+        # Updates only labelled containers, every 5 minutes, and removes the
+        # old image afterwards.
+        command: ["--label-enable", "--interval", "300", "--cleanup"]
+        environment:
+            # Watchtower's default Docker API version is too old for Docker 29+.
+            DOCKER_API_VERSION: "1.44"
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock

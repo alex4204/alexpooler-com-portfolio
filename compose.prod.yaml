@@ -1,0 +1,45 @@
+# The live site, as it runs on the Raspberry Pi:
+#
+#     docker compose -f compose.prod.yaml up -d
+#
+# Needs a .env file beside it, made from .env.example, plus TUNNEL_TOKEN from
+# the Cloudflare Tunnel. New images are picked up by Watchtower, which runs
+# separately from compose.watchtower.yaml.
+name: alexpooler
+
+services:
+    app:
+        image: ghcr.io/alex4204/alexpooler-com-portfolio:latest
+        restart: unless-stopped
+        env_file: .env
+        environment:
+            REDIS_URL: redis://redis:6379
+        depends_on:
+            - redis
+        # No ports on purpose. Only cloudflared reaches the site, over this
+        # project's private network, so every request has come through
+        # Cloudflare and its cf-connecting-ip header can be trusted.
+        # Opts this container in to Watchtower's updates.
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+
+    redis:
+        image: redis:8-alpine
+        restart: unless-stopped
+        # Saved to disk, so rate limits and the daily budget survive restarts.
+        command: ["redis-server", "--appendonly", "yes"]
+        volumes:
+            - redis-data:/data
+
+    cloudflared:
+        image: cloudflare/cloudflared:latest
+        restart: unless-stopped
+        # The tunnel's public hostname should point at http://app:3000.
+        command: ["tunnel", "--no-autoupdate", "run"]
+        environment:
+            TUNNEL_TOKEN: ${TUNNEL_TOKEN:?Set TUNNEL_TOKEN in .env}
+        depends_on:
+            - app
+
+volumes:
+    redis-data:
