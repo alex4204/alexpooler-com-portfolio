@@ -1,12 +1,12 @@
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import { CodeXmlIcon, ExternalLinkIcon } from "lucide-react";
 
+import { GitHubIcon } from "@/components/icons/github-icon";
+import { LinkedInIcon } from "@/components/icons/linkedin-icon";
 import type { LinkIcon as LinkIconName } from "@/lib/types/navigation";
 
-/** Lucide has no brand logos, so those two come from Tabler, which matches its style. */
 const ICONS = {
-    github: IconBrandGithub,
-    linkedin: IconBrandLinkedin,
+    github: GitHubIcon,
+    linkedin: LinkedInIcon,
     code: CodeXmlIcon,
     external: ExternalLinkIcon,
 };

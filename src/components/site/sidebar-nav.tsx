@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 
 import { ExperienceDuration } from "@/components/site/experience-duration";
 import { LinkIcon } from "@/components/site/link-icon";
-import { LinkButton } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { SPRING } from "@/lib/motion";
 import type { NavGroup, NavItem } from "@/lib/types/navigation";
@@ -21,20 +21,25 @@ type SidebarNavListProps = {
     layoutId?: string;
 };
 
-/** An icon-only link to another site, named by its label. */
+/**
+ * An icon-only link to another site, named by its label. A plain <a> styled
+ * as a button, because the tooltip needs a trigger that passes its props on.
+ */
 const ExternalButton = ({ item }: { item: NavItem }) => (
     <TooltipTrigger>
-        <LinkButton
+        <a
             href={item.href}
             target="_blank"
             rel="noreferrer"
-            variant="ghost"
-            size="icon"
             aria-label={`${item.label} (opens in a new tab)`}
-            className="text-foreground/55 hover:text-foreground"
+            className={buttonVariants({
+                variant: "ghost",
+                size: "icon",
+                className: "text-foreground/55 hover:text-foreground",
+            })}
         >
             <LinkIcon name={item.icon ?? "external"} />
-        </LinkButton>
+        </a>
         <Tooltip placement="bottom">{item.label}</Tooltip>
     </TooltipTrigger>
 );

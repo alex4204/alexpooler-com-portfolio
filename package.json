@@ -19,7 +19,6 @@
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "^16.4.6",
-        "@tabler/icons-react": "^3.51.0",
         "ai": "^7.0.168",
         "class-variance-authority": "^0.7.1",
         "cn": "^0.5.2",

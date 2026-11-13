@@ -16,10 +16,13 @@ const Collapsible = (props: DisclosureProps) => (
     <CollapsiblePrimitive data-slot="collapsible" {...props} />
 );
 
-const CollapsibleTrigger = (props: ButtonProps) => (
+const CollapsibleTrigger = ({ className, ...props }: ButtonProps) => (
     <CollapsibleTriggerPrimitive
         slot="trigger"
         data-slot="collapsible-trigger"
+        className={composeRenderProps(className, (className) =>
+            cn("cursor-pointer", className),
+        )}
         {...props}
     />
 );

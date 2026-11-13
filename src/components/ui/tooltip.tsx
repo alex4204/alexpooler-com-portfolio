@@ -9,7 +9,11 @@ import {
 
 import { cn } from "@/lib/utils/cn";
 
-/** Takes two children: the element that triggers it, then the `Tooltip`. */
+/**
+ * Takes two children: the element that triggers it, then the `Tooltip`. The
+ * trigger must be a native element that passes on the props it's given, such
+ * as an `<a>`; React Aria's own `Link` doesn't.
+ */
 const TooltipTrigger = ({
     delay = 300,
     children,

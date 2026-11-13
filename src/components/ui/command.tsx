@@ -54,13 +54,18 @@ const CommandDialog = ({
     <Dialog
         isOpen={open}
         onOpenChange={onOpenChange}
-        className={cn("top-[14vh] translate-y-0 sm:max-w-xl", className)}
+        // A whole-pixel top. A percentage of the window height lands between
+        // pixels, and Chrome then leaves faint lines when a hover highlight goes.
+        className={cn("top-24 translate-y-0 sm:max-w-xl", className)}
     >
         <DialogTitle className="sr-only">{title}</DialogTitle>
         {children}
     </Dialog>
 );
 
+// A whole-pixel height (h-12), so the results below sit exactly on pixels.
+// Padding around 15px text came to 50.5px, and the half pixel left faint
+// lines in Chrome when a result's hover highlight went away.
 const CommandInput = ({ className, placeholder, ...props }: InputProps) => (
     <SearchField
         autoFocus
@@ -73,7 +78,7 @@ const CommandInput = ({ className, placeholder, ...props }: InputProps) => (
             placeholder={placeholder}
             data-slot="command-input"
             className={cn(
-                "w-full bg-transparent py-3.5 text-[15px] outline-none placeholder:text-foreground/40 [&::-webkit-search-cancel-button]:hidden",
+                "h-12 w-full bg-transparent text-[15px] outline-none placeholder:text-foreground/40 [&::-webkit-search-cancel-button]:hidden",
                 className,
             )}
             {...props}
@@ -89,7 +94,7 @@ const CommandList = <T extends object>({
     <Menu
         data-slot="command-list"
         className={cn(
-            "max-h-[50vh] scroll-py-2 overflow-y-auto p-2 outline-none",
+            "max-h-[50vh] scroll-py-2 overflow-y-auto overscroll-contain p-2 outline-none",
             className,
         )}
         {...props}
@@ -135,7 +140,7 @@ const CommandItem = <T extends object>({
     <MenuItem
         data-slot="command-item"
         className={cn(
-            "flex cursor-default items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm outline-none select-none data-focused:bg-foreground/[0.08] data-disabled:opacity-50",
+            "flex cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm outline-none select-none data-focused:bg-foreground/[0.08] data-disabled:opacity-50",
             className,
         )}
         {...props}

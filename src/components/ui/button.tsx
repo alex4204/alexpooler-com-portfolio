@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/utils/cn";
 
 const buttonVariants = cva(
-    "group/button inline-flex shrink-0 items-center justify-center gap-1.5 rounded-lg border border-transparent text-sm whitespace-nowrap transition-[color,background-color,border-color,scale] duration-150 outline-none select-none focus-visible:ring-2 focus-visible:ring-ring/60 disabled:pointer-events-none disabled:opacity-40 data-pressed:scale-[0.96] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "group/button inline-flex shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-transparent text-sm whitespace-nowrap transition-[color,background-color,border-color,scale] duration-150 outline-none select-none focus-visible:ring-2 focus-visible:ring-ring/60 disabled:pointer-events-none disabled:opacity-40 data-pressed:scale-[0.96] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
     {
         variants: {
             variant: {
@@ -80,4 +80,4 @@ const LinkButton = ({
     />
 );
 
-export { Button, LinkButton };
+export { Button, buttonVariants, LinkButton };

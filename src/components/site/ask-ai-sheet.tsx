@@ -136,7 +136,7 @@ const AskAiSheet = ({
 
             {/* Reversed, so the browser keeps the newest message in view: on
                 opening, as messages arrive and as answers type out. */}
-            <div className="flex min-h-0 flex-1 flex-col-reverse overflow-y-auto px-4 py-4">
+            <div className="flex min-h-0 flex-1 flex-col-reverse overflow-y-auto overscroll-contain px-4 py-4">
                 {/* mb-auto keeps a short conversation at the top. */}
                 <div className="mb-auto space-y-4">
                     {messages.length === 0 && (
@@ -149,7 +149,7 @@ const AskAiSheet = ({
                                     key={suggestion}
                                     type="button"
                                     onClick={() => ask(suggestion)}
-                                    className="block w-full animate-in rounded-lg border border-foreground/10 px-3 py-2 text-left text-sm text-foreground/80 fill-mode-both fade-in slide-in-from-bottom-2 hover:border-foreground/25"
+                                    className="block w-full animate-in cursor-pointer rounded-lg border border-foreground/10 px-3 py-2 text-left text-sm text-foreground/80 fill-mode-both fade-in slide-in-from-bottom-2 hover:border-foreground/25"
                                     style={{
                                         animationDelay: `${120 + index * 50}ms`,
                                     }}
