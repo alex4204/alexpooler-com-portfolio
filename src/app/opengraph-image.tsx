@@ -46,10 +46,6 @@ const generateImageMetadata = async () => {
     ];
 };
 
-/**
- * Few words in big type: LinkedIn shows this at about a third of its size and
- * compresses it hard, so anything smaller than the role turns to blur.
- */
 const OpenGraphImage = async () => {
     const profile = await getProfile();
     return new ImageResponse(
@@ -60,7 +56,7 @@ const OpenGraphImage = async () => {
                 justifyContent: "space-between",
                 width: "100%",
                 height: "100%",
-                padding: 88,
+                padding: 80,
                 background: COLOURS.background,
                 color: COLOURS.foreground,
                 fontFamily: "Source Serif",
@@ -71,39 +67,26 @@ const OpenGraphImage = async () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: 136,
-                    height: 136,
-                    borderRadius: 28,
+                    width: 112,
+                    height: 112,
+                    borderRadius: 24,
                     background: COLOURS.primary,
                     color: COLOURS.primaryForeground,
-                    fontSize: 60,
+                    fontSize: 48,
                     fontWeight: 600,
                 }}
             >
                 {initialsOf(profile.name)}
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div
-                    style={{
-                        fontSize: 124,
-                        fontWeight: 600,
-                        letterSpacing: -2,
-                        lineHeight: 1,
-                    }}
-                >
+            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <div style={{ fontSize: 80, fontWeight: 600 }}>
                     {profile.name}
                 </div>
-                <div style={{ fontSize: 56, opacity: 0.75 }}>
-                    {profile.headline}
+                <div style={{ fontSize: 36, lineHeight: 1.4, opacity: 0.7 }}>
+                    {profile.tagline}
                 </div>
             </div>
-            <div
-                style={{
-                    fontSize: 40,
-                    fontWeight: 600,
-                    color: COLOURS.primary,
-                }}
-            >
+            <div style={{ fontSize: 30, color: COLOURS.primary }}>
                 {new URL(profile.url).host}
             </div>
         </div>,

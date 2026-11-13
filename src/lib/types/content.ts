@@ -94,8 +94,6 @@ const skillGroupSchema = z.object({
 const profileSchema = z.strictObject({
     name: nonEmpty,
     tagline: nonEmpty,
-    /** A few words under the name in the link-preview image. */
-    headline: nonEmpty,
     role: nonEmpty,
     location: nonEmpty,
     focus: nonEmpty,

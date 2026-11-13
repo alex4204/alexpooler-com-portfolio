@@ -61,7 +61,7 @@ Leave everything else alone: sections the CV doesn't cover (such as "The hard pa
 
 **Writing.** Keep the CV's meaning and wording. The bullets are the user's own words, so tidy them, don't embellish them. Use British spelling, and refer to the user by name or not at all, never with guessed pronouns. Never add metrics, claims or technologies the CV doesn't state; that's the one rule that can't bend.
 
-**Profile.** Update `tagline`, `role`, `focus`, `education`, `intro` and `links` only where the CV states them. Leave `headline`, `url`, `siteLinks` and `askAiSuggestions` alone; they're about the site, not the CV. Never copy a phone number or home address into the site, even if the CV has them. A town or region for `location` is fine.
+**Profile.** Update `tagline`, `role`, `focus`, `education`, `intro` and `links` only where the CV states them. Leave `url`, `siteLinks` and `askAiSuggestions` alone; they're about the site, not the CV. Never copy a phone number or home address into the site, even if the CV has them. A town or region for `location` is fine.
 
 **Skills.** Every item in a `stack` must exist in `content/skills.yaml`, matching exactly. Add new skills to the group they fit, and keep each group's existing order. Don't remove a skill just because the CV no longer lists it; ask.
 
