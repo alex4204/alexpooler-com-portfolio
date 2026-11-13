@@ -10,13 +10,12 @@ name: watchtower
 
 services:
     watchtower:
-        image: containrrr/watchtower:1.7.1
+        # The maintained fork of containrrr/watchtower, which is archived. It
+        # works out the Docker API version itself and uses the same labels.
+        image: nickfedor/watchtower:1.24.0
         restart: unless-stopped
         # Updates only labelled containers, every 5 minutes, and removes the
         # old image afterwards.
         command: ["--label-enable", "--interval", "300", "--cleanup"]
-        environment:
-            # Watchtower's default Docker API version is too old for Docker 29+.
-            DOCKER_API_VERSION: "1.44"
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
