@@ -3,11 +3,12 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ExternalLinkIcon } from "lucide-react";
 import { motion } from "motion/react";
 
 import { ExperienceDuration } from "@/components/site/experience-duration";
+import { LinkIcon } from "@/components/site/link-icon";
 import { LinkButton } from "@/components/ui/button";
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip";
 import { SPRING } from "@/lib/motion";
 import type { NavGroup, NavItem } from "@/lib/types/navigation";
 import { cn } from "@/lib/utils/cn";
@@ -20,17 +21,22 @@ type SidebarNavListProps = {
     layoutId?: string;
 };
 
+/** An icon-only link to another site, named by its label. */
 const ExternalButton = ({ item }: { item: NavItem }) => (
-    <LinkButton
-        href={item.href}
-        target="_blank"
-        rel="noreferrer"
-        variant="ghost"
-        className="w-full justify-between px-3"
-    >
-        {item.label}
-        <ExternalLinkIcon aria-label="Opens in a new tab" />
-    </LinkButton>
+    <TooltipTrigger>
+        <LinkButton
+            href={item.href}
+            target="_blank"
+            rel="noreferrer"
+            variant="ghost"
+            size="icon"
+            aria-label={`${item.label} (opens in a new tab)`}
+            className="text-foreground/55 hover:text-foreground"
+        >
+            <LinkIcon name={item.icon ?? "external"} />
+        </LinkButton>
+        <Tooltip placement="bottom">{item.label}</Tooltip>
+    </TooltipTrigger>
 );
 
 const SidebarNavList = ({
@@ -52,13 +58,17 @@ const SidebarNavList = ({
                         )}
                     </p>
                 )}
-                <ul>
+                <ul
+                    className={cn(
+                        group.items.every((item) => item.external) &&
+                            "flex gap-1 px-1",
+                    )}
+                >
                     {group.items.map((item, itemIndex) => {
-                        const company = item.company;
-                        const startsCompany =
-                            company &&
-                            company.name !==
-                                group.items[itemIndex - 1]?.company?.name;
+                        const subgroup = item.subgroup;
+                        const startsSubgroup =
+                            subgroup &&
+                            subgroup !== group.items[itemIndex - 1]?.subgroup;
                         if (item.external) {
                             return (
                                 <li key={item.href}>
@@ -69,14 +79,14 @@ const SidebarNavList = ({
                         const isActive = item.href === activeHref;
                         return (
                             <Fragment key={item.href}>
-                                {startsCompany && (
+                                {startsSubgroup && (
                                     <li className="px-3 pt-1 pb-0.5 text-[13px] text-foreground/50 italic">
-                                        {company.name}
+                                        {subgroup}
                                     </li>
                                 )}
                                 <li
                                     className={cn(
-                                        company &&
+                                        subgroup &&
                                             "ml-4 border-l border-foreground/10",
                                     )}
                                 >

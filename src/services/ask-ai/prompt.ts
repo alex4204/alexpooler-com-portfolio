@@ -4,16 +4,12 @@ import { cacheLife } from "next/cache";
 
 import {
     describeEntry,
-    getAllEntries,
     getProfile,
+    getPublishedEntries,
     getSkillGroups,
 } from "@/lib/content/content";
 import type { Source } from "@/lib/types/ask-ai";
 import type { Entry } from "@/lib/types/content";
-
-/** Entries Ask AI may talk about. Drafts are placeholders, so they are left out. */
-const getPublishedEntries = async () =>
-    (await getAllEntries()).filter((entry) => !entry.draft);
 
 /** Every page an answer may cite, by path. Anything else is dropped. */
 const getCitablePages = async () =>
@@ -33,6 +29,7 @@ const entryPage = (entry: Entry) =>
         `Title: ${describeEntry(entry)}`,
         `Type: ${entry.kind}`,
         `When: ${entry.period}`,
+        entry.kind === "project" && entry.inProgress && "Status: in progress",
         entry.location && `Location: ${entry.location}`,
         `Summary: ${entry.summary}`,
         entry.stack.length > 0 && `Skills: ${entry.stack.join(", ")}`,

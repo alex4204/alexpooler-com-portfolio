@@ -22,7 +22,7 @@ pnpm build        # catches content and route errors the others miss
 
 - **Arrow functions only.** No `function` declarations or function expressions, including callbacks. (Generators are the one thing arrows can't express; avoid needing them.)
 - **Exports go at the bottom of the file, in a single `export { … }`.** Nothing is exported inline. Types are exported there too (`type Foo`).
-- **Named exports by default.** A default export is allowed only where Next.js requires it: `page`, `layout`, `template`, `not-found`, `error`, `loading`, `default` and config files. Never add a default export elsewhere, and never add barrel (`index.ts`) files.
+- **Named exports by default.** A default export is allowed only where Next.js requires it: `page`, `layout`, `template`, `not-found`, `error`, `loading`, `default`, `sitemap`, `robots`, `opengraph-image` and config files. Never add a default export elsewhere, and never add barrel (`index.ts`) files.
 - Import with the `@/` alias, not long relative paths. Use `import type` for types.
 
 ## Next.js
@@ -62,6 +62,7 @@ Prettier decides. Do not hand-format or fight it.
 | `src/lib/`                | Shared domain logic safe for server and client.                                                                                                                                                                                          |
 | `src/lib/types/`          | **All** types. Zod schemas at the top of each file, `z.infer` types below.                                                                                                                                                               |
 | `src/lib/content/`        | `loader.ts` turns files into validated data and knows nothing about the site. `content.ts` has the cached getters pages use (`getEntries`, `getProfile`…).                                                                               |
+| `src/lib/site-metadata/`  | How the site describes itself to search engines, link previews and AI tools: page metadata, structured data and `llms.txt`.                                                                                                              |
 | `src/lib/utils/`          | **All** small generic helper functions, one concern per file (`cn.ts`, `slug.ts`, `url.ts`…). Helpers that only serve one area go in a subfolder named after it (`utils/content/`). Do not define a helper inline if it could live here. |
 | `src/services/`           | Server-side integrations (e.g. `services/ask-ai/`). Always `server-only`.                                                                                                                                                                |
 | `src/hooks/`              | Client hooks.                                                                                                                                                                                                                            |
@@ -89,6 +90,7 @@ Prettier decides. Do not hand-format or fight it.
 - No cheesy or gimmicky elements: no fake terminals or code, no novelty widgets.
 - British spelling in copy. Refer to Alex without guessing pronouns.
 - Unfinished entries get `draft: true`, which keeps them out of Ask AI.
+- Projects still being built get `inProgress: true`. Describe what they will be and the plans for them, confidently, not their current state: no "only a dry run so far" or "not connected yet". Avoid details that are likely to change.
 
 ## Ask AI
 

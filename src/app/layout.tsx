@@ -6,6 +6,7 @@ import { MotionProvider } from "@/components/site/motion-provider";
 import { SidebarNav, SidebarNavList } from "@/components/site/sidebar-nav";
 import { SiteHeader } from "@/components/site/site-header";
 import { getProfile } from "@/lib/content/content";
+import { getPageMetadata } from "@/lib/site-metadata/page-metadata";
 import { getNavGroups } from "@/lib/navigation";
 import { cn } from "@/lib/utils/cn";
 
@@ -19,8 +20,9 @@ const sourceSerif = Source_Serif_4({
 const generateMetadata = async (): Promise<Metadata> => {
     const profile = await getProfile();
     return {
+        ...(await getPageMetadata({ description: profile.tagline, path: "/" })),
+        metadataBase: new URL(profile.url),
         title: { default: profile.name, template: `%s · ${profile.name}` },
-        description: profile.tagline,
     };
 };
 
@@ -28,7 +30,7 @@ const RootLayout = async ({ children }: LayoutProps<"/">) => {
     const navGroups = await getNavGroups();
     return (
         <html
-            lang="en"
+            lang="en-GB"
             suppressHydrationWarning
             className={cn(sourceSerif.variable, "antialiased")}
         >

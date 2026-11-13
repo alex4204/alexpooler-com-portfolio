@@ -45,13 +45,14 @@ flowchart LR
     route <-->|"prompt, streamed answer"| model
 ```
 
-**At build time.** Every page comes from a file in `content/`, checked against a schema. The same content becomes Ask AI's knowledge, so the site and the assistant can't disagree.
+**At build time.** Every page comes from a file in `content/`, checked against a schema. The same content becomes Ask AI's knowledge and what the site tells search engines and AI tools, so none of them can disagree.
 
 ```mermaid
 flowchart LR
     files["content/<br/>MDX and YAML"] --> schemas{"zod schemas"}
     schemas -->|valid| pages["Prerendered pages"]
     schemas -->|valid| prompt["Ask AI's prompt"]
+    schemas -->|valid| discovery["Sitemap, llms.txt,<br/>link previews"]
     schemas -->|"invalid"| fail["Build fails,<br/>naming the file"]
 ```
 
@@ -127,6 +128,10 @@ The provider account has its own spend limit as well, so even a bug in this code
 ### Security headers
 
 Every response carries `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS, and a Content Security Policy that forbids framing, plugins and redirected forms. There's no `script-src` policy: allowing Next's inline scripts safely needs a new nonce on every request, which would stop pages being prerendered.
+
+### Built to be found, by search engines and AI
+
+Every page declares its canonical address and has its own link-preview tags, with a preview image generated in the site's font. The About page describes Alex as schema.org structured data, and [`/llms.txt`](https://llmstxt.org) and `/llms-full.txt` give AI tools the whole site as plain Markdown. All of it is built from the same content as the pages, in [`src/lib/site-metadata/`](src/lib/site-metadata/), so it can't drift out of date.
 
 ## Hosting: built for a Cloudflare Tunnel
 
@@ -209,14 +214,16 @@ All of them are read on the server only. See [`.env.example`](.env.example).
 ## Project layout
 
 ```
-content/              Profile, skills and one MDX file per project, role and course
-public/               Static files, including the CV
-src/app/              Routes, including the Ask AI route handler
-src/components/       UI: article layout, site chrome, shadcn primitives
-src/lib/content/      Loading and validating content
-src/lib/types/        All types, with zod schemas first
-src/lib/utils/        Small helpers, grouped by area
-src/services/ask-ai/  The model, prompt and rate limits (server only)
+content/                Profile, skills and one MDX file per project, role and course
+public/                 Static files, including the CV
+assets/fonts/           The font the link-preview image is drawn with
+src/app/                Routes, including the Ask AI route handler
+src/components/         UI: article layout, site chrome, shadcn primitives
+src/lib/content/        Loading and validating content
+src/lib/site-metadata/  Metadata, structured data and llms.txt
+src/lib/types/          All types, with zod schemas first
+src/lib/utils/          Small helpers, grouped by area
+src/services/ask-ai/    The model, prompt and rate limits (server only)
 ```
 
 The rules the code follows, such as arrow functions only, named exports at the bottom of each file, and no invented content, are written down in [`CODING-STANDARDS.md`](CODING-STANDARDS.md) and enforced by ESLint where possible.
@@ -233,10 +240,10 @@ AI coding agents, mainly Claude Code, were used extensively throughout developme
 
 The code is MIT licensed; the content isn't (see [Licence](#licence)). To make it yours:
 
-1. Replace everything in `content/` and the CV in `public/`. The schemas in `src/lib/types/content.ts` describe every field, and the build tells you what's missing. With Claude Code, the `update-from-cv` skill can do most of this from your own CV.
+1. Replace everything in `content/` and the CV in `public/`, including the site's address, `url` in `content/profile.yaml`. The schemas in `src/lib/types/content.ts` describe every field, and the build tells you what's missing. With Claude Code, the `update-from-cv` skill can do most of this from your own CV.
 2. Set the environment variables, and adjust the prompt in [`prompt.ts`](src/services/ask-ai/prompt.ts) if you want a different tone.
 3. Host it behind a Cloudflare Tunnel, or make the change described in [Hosting](#hosting-built-for-a-cloudflare-tunnel) first.
 
 ## Licence
 
-The code is released under the [MIT Licence](LICENSE). The content is not: everything in `content/`, the CV in `public/`, and Alex Pooler's name and personal details are © Alexander Pooler, all rights reserved. If you fork the site, replace them with your own.
+The code is released under the [MIT Licence](LICENSE). The content is not: everything in `content/`, the CV in `public/`, and Alex Pooler's name and personal details are © Alexander Pooler, all rights reserved. If you fork the site, replace them with your own. The font files in `assets/fonts/` are under the SIL Open Font License.

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import { ProjectArticle } from "@/components/article/project-article";
 import { getEntries, getEntry } from "@/lib/content/content";
+import { getPageMetadata } from "@/lib/site-metadata/page-metadata";
 
 const generateStaticParams = async () =>
     (await getEntries("project")).map((project) => ({ slug: project.slug }));
@@ -14,7 +15,11 @@ const generateMetadata = async ({
     const { slug } = await params;
     const project = await getEntry("project", slug);
     return project
-        ? { title: project.title, description: project.summary }
+        ? getPageMetadata({
+              title: project.title,
+              description: project.summary,
+              path: project.href,
+          })
         : {};
 };
 

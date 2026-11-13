@@ -1,0 +1,28 @@
+---
+title: Racket Price Comparison
+period: Personal project
+inProgress: true
+order: 5
+summary: A price comparison site for padel equipment, starting with rackets, that brings together prices from retailers across the UK and Ireland.
+stack:
+    - Go
+    - Next.js
+    - React
+    - TypeScript
+    - React Aria
+    - PostgreSQL
+    - Docker
+    - LLM Integration
+hue: 90
+---
+
+## What I'm building
+
+- **A Go API** built on the router package I wrote for [Adsum](/projects/adsum), with cross-origin protection on every route.
+- **An ingestion pipeline** that collects listings from retailers' official product feeds. Each retailer has its own adaptor that maps its feed into one shared product format, so adding a retailer doesn't change the rest of the pipeline.
+- **Strict validation** as listings come in. Prices are handled as whole pennies or cents, never floating point, and listings in pounds and euros are kept separate rather than converted.
+- **Product matching** that recognises the same product across different shops, so its prices can be compared side by side, with listings stored in PostgreSQL. More advanced matching and pricing algorithms will build on this over time.
+- **A full Next.js app** for shoppers: browse and search equipment, filter by brand and category, and open any product to see every retailer's price side by side, with links straight to the shop.
+- **Natural language search**, so shoppers can describe what they're after, such as "a lightweight control racket under £150", instead of working through filters.
+- **Beyond rackets.** Rackets come first, with the pipeline built to take in other equipment such as balls and overgrips.
+- **Mailing list updates**, so shoppers can keep up with prices without checking back.

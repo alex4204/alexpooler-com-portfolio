@@ -51,3 +51,14 @@
       - Laravel
       - Livewire
       - DigitalOcean
+      - Tailwind CSS
+      - Redis
+      - Cloudflare
+- name: AI
+  skills:
+      - LLM Integration
+      - Prompt Engineering
+      - Agentic AI
+      - Facial Recognition
+      - AI SDK (Vercel)
+      - ElevenLabs

@@ -1,0 +1,38 @@
+---
+title: Portfolio Website
+period: Personal project
+order: 1
+summary: This site, built with Next.js and TypeScript, with an Ask AI assistant that answers questions from its content. Self-hosted on a Raspberry Pi behind a Cloudflare Tunnel.
+stack:
+    - Next.js
+    - React
+    - TypeScript
+    - React Aria
+    - Tailwind CSS
+    - AI SDK (Vercel)
+    - Redis
+    - Docker
+    - GitHub Actions
+    - CI/CD
+    - Cloudflare
+    - LLM Integration
+    - Prompt Engineering
+    - Agentic AI
+links:
+    - label: Source code
+      href: https://github.com/alex4204/alexpooler-com-portfolio
+hue: 210
+---
+
+## What I built
+
+- A Next.js and TypeScript site whose pages are written as MDX and YAML, validated at build time and prerendered, so pages are served without running any code per request.
+- Ask AI, an assistant built with Vercel's AI SDK that answers questions using only the site's content and links the pages it used. It works with Anthropic, OpenAI or Google models, chosen by configuration.
+- Rate limiting for Ask AI in Redis, per visitor and with a daily token budget for the whole site. If Redis is unavailable, Ask AI switches off rather than running without limits.
+
+## How it runs
+
+- Every push to `main` is checked and built by GitHub Actions, which publishes an arm64 Docker image.
+- The site runs on a Raspberry Pi behind a Cloudflare Tunnel, so the Pi has no open ports. New images are picked up and deployed automatically.
+
+The [source code](https://github.com/alex4204/alexpooler-com-portfolio) has the full details and the reasoning behind each choice.

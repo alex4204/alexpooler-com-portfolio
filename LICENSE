@@ -4,6 +4,9 @@ It does not cover the site's content: the files in `content/`, the CV in
 `public/`, and Alexander Pooler's name and personal details. These are
 Copyright (c) 2026 Alexander Pooler, all rights reserved.
 
+The Source Serif 4 font files in `assets/fonts/` are Adobe's, under the SIL
+Open Font License 1.1 in `assets/fonts/OFL.txt`.
+
 ---
 
 MIT License

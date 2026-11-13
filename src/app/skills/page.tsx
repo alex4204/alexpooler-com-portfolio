@@ -3,12 +3,16 @@ import type { Metadata } from "next";
 import { ArticleLayout } from "@/components/article/article-layout";
 import { SkillsList, type SkillLetter } from "@/components/article/skills-list";
 import { getEntriesUsing, getSkills, skillId } from "@/lib/content/content";
+import { getPageMetadata } from "@/lib/site-metadata/page-metadata";
 
-const metadata = {
+const PAGE = {
     title: "Skills, A to Z",
     description:
         "Every technology I work with, and the projects and roles that reference it.",
-} satisfies Metadata;
+    path: "/skills",
+};
+
+const generateMetadata = (): Promise<Metadata> => getPageMetadata(PAGE);
 
 /** Every skill with the pages that reference it, grouped by first letter. */
 const getSkillLetters = async () => {
@@ -38,8 +42,8 @@ const SkillsPage = async () => {
     return (
         <ArticleLayout
             href="/skills"
-            title={metadata.title}
-            description={metadata.description}
+            title={PAGE.title}
+            description={PAGE.description}
             sections={[]}
             contents={letters.map((group) => ({
                 id: group.id,
@@ -51,5 +55,5 @@ const SkillsPage = async () => {
     );
 };
 
-export { metadata };
+export { generateMetadata };
 export default SkillsPage;

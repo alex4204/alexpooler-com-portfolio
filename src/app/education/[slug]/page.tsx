@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import { RoleArticle } from "@/components/article/role-article";
 import { getEntries, getEntry } from "@/lib/content/content";
+import { getPageMetadata } from "@/lib/site-metadata/page-metadata";
 
 const generateStaticParams = async () =>
     (await getEntries("education")).map((course) => ({ slug: course.slug }));
@@ -13,7 +14,13 @@ const generateMetadata = async ({
 }: PageProps<"/education/[slug]">): Promise<Metadata> => {
     const { slug } = await params;
     const course = await getEntry("education", slug);
-    return course ? { title: course.title, description: course.summary } : {};
+    return course
+        ? getPageMetadata({
+              title: course.title,
+              description: course.summary,
+              path: course.href,
+          })
+        : {};
 };
 
 const EducationPageContent = async ({

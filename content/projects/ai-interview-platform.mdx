@@ -1,0 +1,36 @@
+---
+title: AI Interview Platform
+period: Personal project
+inProgress: true
+order: 4
+summary: A platform for practising technical interviews with an AI interviewer, tailored to real job openings.
+stack:
+    - Next.js
+    - React
+    - TypeScript
+    - React Aria
+    - Python
+    - FastAPI
+    - PostgreSQL
+    - ElevenLabs
+    - LLM Integration
+    - Prompt Engineering
+hue: 280
+---
+
+## What I'm building
+
+- **Real roles to practise for.** A Python/FastAPI backend pulls engineering roles from companies' job boards and normalises them into one format, so candidates can search and filter openings by company and location in a Next.js frontend.
+- **Interviews tailored to the role.** The AI interviewer is given the role, company and job description, and runs a behavioural, technical or mixed interview of the length the candidate chooses.
+- **Spoken conversation.** Interviews happen out loud, in real time, like a real call, powered by ElevenLabs' realtime speech models through their API.
+- **More than talking.** Technical rounds will include an interactive coding environment, so candidates can work through problems as well as discuss them.
+- **Useful feedback.** Each interview ends with a transcript and written feedback: what went well, what to improve, and what to practise next.
+
+## Design
+
+- **Server-first frontend.** Next.js Server Components load jobs and interview setup, and Server Actions start sessions. Only one small client component handles the microphone and the live call, so very little code runs in the browser.
+- **A layered backend.** FastAPI routes stay thin, business logic lives in services, and each external provider sits behind its own integration layer. Services receive their dependencies rather than creating them, which keeps them easy to test and lets a provider change without touching the rest of the code.
+- **One contract, both sides.** Requests and responses are defined as Pydantic models in the backend and validated again with Zod in the frontend, so the two can't silently drift apart.
+- **Secrets stay on the server.** The backend owns every interview session and every call to ElevenLabs, so API keys never reach the browser, and each session is tied to the browser that started it.
+- **Untrusted input handled as such.** Job descriptions come from outside sources, so they're sanitised before they're shown and treated as context for the interviewer, never as instructions.
+- **An honest interviewer.** It never claims to represent the employer or to know the company's real interview questions.

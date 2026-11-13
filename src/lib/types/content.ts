@@ -19,6 +19,8 @@ const entryFields = {
     title: nonEmpty,
     /** Shorter name for the sidebar and link lists. Defaults to the title. */
     label: nonEmpty.optional(),
+    /** Name in the sidebar, search and previous/next links. Defaults to the label. */
+    sidebarLabel: nonEmpty.optional(),
     /** Employer, institution or client. */
     organisation: nonEmpty.optional(),
     location: nonEmpty.optional(),
@@ -36,6 +38,8 @@ const projectSchema = z
         ...entryFields,
         /** Free text, such as "Final-year project". Projects have no dates. */
         period: nonEmpty,
+        /** Still being built: listed under "In progress" and badged on its page. */
+        inProgress: z.boolean().optional(),
         /** Position in lists, lowest first. */
         order: z.number().int(),
         /** Placeholder screenshot colour until real images exist. */
@@ -95,7 +99,11 @@ const profileSchema = z.strictObject({
     focus: nonEmpty,
     education: nonEmpty,
     email: z.email(),
+    /** Where the site is published, for the sitemap and robots.txt. */
+    url: z.url(),
     links: z.array(externalLinkSchema).default([]),
+    /** Links about the site itself, such as its source code. */
+    siteLinks: z.array(externalLinkSchema).default([]),
     intro: nonEmpty,
     outsideWork: nonEmpty,
     /** A PDF in `public/`, offered as a download in the header. */

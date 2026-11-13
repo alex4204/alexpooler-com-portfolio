@@ -4,6 +4,7 @@ import { MobileNav } from "@/components/site/mobile-nav";
 import { SiteTools } from "@/components/site/site-tools";
 import { getProfile } from "@/lib/content/content";
 import { getNavGroups, getSearchItems } from "@/lib/navigation";
+import { initialsOf } from "@/lib/utils/initials";
 import { askAiLimits } from "@/services/ask-ai/ask-ai";
 
 const SiteHeader = async () => {
@@ -12,18 +13,26 @@ const SiteHeader = async () => {
         getNavGroups(),
         getSearchItems(),
     ]);
+    // h-14 includes the border, so the sidebars that stick at top-14 start
+    // exactly where they stick and don't shift when scrolling begins.
     return (
-        <header className="sticky top-0 z-30 border-b border-foreground/10 bg-background/85 backdrop-blur">
-            <div className="mx-auto flex h-14 max-w-[88rem] items-center gap-3 px-4">
+        <header className="sticky top-0 z-30 h-14 border-b border-foreground/10 bg-background/85 backdrop-blur">
+            <div className="mx-auto flex h-full max-w-[88rem] items-center gap-2 px-4 sm:gap-3">
                 <MobileNav groups={navGroups} />
                 <Link
                     href="/"
-                    className="flex items-center gap-2 font-semibold"
+                    className="flex shrink-0 items-center gap-2 font-semibold"
                 >
-                    <span className="flex size-6 items-center justify-center rounded-md bg-primary text-xs text-primary-foreground">
-                        {profile.name[0]}
+                    <span
+                        aria-hidden="true"
+                        className="flex size-7 items-center justify-center rounded-md bg-primary text-xs text-primary-foreground"
+                    >
+                        {initialsOf(profile.name)}
                     </span>
-                    {profile.name}
+                    {/* Phones show only the initials, to leave room for the tools. */}
+                    <span className="sr-only sm:not-sr-only">
+                        {profile.name}
+                    </span>
                 </Link>
                 <SiteTools
                     searchItems={searchItems}

@@ -29,6 +29,8 @@ const eslintConfig = defineConfig([
     {
         files: [
             "src/app/**/{page,layout,not-found,error,global-error,loading,template,default}.tsx",
+            "src/app/{sitemap,robots}.ts",
+            "src/app/opengraph-image.tsx",
             "*.config.{ts,mjs}",
         ],
         rules: {

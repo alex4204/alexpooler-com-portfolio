@@ -1,12 +1,16 @@
 import type { Span } from "@/lib/types/content";
 
+type LinkIcon = "github" | "linkedin" | "code" | "external";
+
 type NavItem = {
     href: string;
     label: string;
-    /** Opens another site. Shown as a button and kept out of search and paging. */
+    /** Opens another site. Kept out of search and paging. */
     external?: boolean;
-    /** Items sharing a company are listed together under its name. */
-    company?: { name: string; spans: Span[] };
+    /** Stands in for the label in the sidebar's row of external links. */
+    icon?: LinkIcon;
+    /** Items sharing a subgroup, such as a company, are listed under its name. */
+    subgroup?: string;
 };
 
 type NavGroup = {
@@ -23,4 +27,4 @@ type SearchItem = NavItem & {
     keywords: string;
 };
 
-export type { NavGroup, NavItem, SearchItem };
+export type { LinkIcon, NavGroup, NavItem, SearchItem };

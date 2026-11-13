@@ -4,6 +4,7 @@ import {
     LinkList,
     Paragraph,
 } from "@/components/article/prose";
+import { Badge } from "@/components/ui/badge";
 import type { Entry } from "@/lib/types/content";
 import { getRelatedEntries, skillId } from "@/lib/content/content";
 
@@ -15,6 +16,9 @@ const EntryMeta = ({ entry }: { entry: Entry }) => (
             <span className="text-foreground/55">{entry.organisation}</span>
         )}
         <span className="text-foreground/45">{entry.period}</span>
+        {entry.kind === "project" && entry.inProgress && (
+            <Badge className="self-center">In progress</Badge>
+        )}
     </p>
 );
 

@@ -94,13 +94,20 @@ const useMDXComponents = (): MDXComponents => ({
             </table>
         </div>
     ),
-    th: ({ children }) => (
-        <th className="border-b border-foreground/30 px-3 py-2 font-semibold">
+    // `style` carries a column's alignment from the Markdown, such as `---:`.
+    th: ({ children, style }) => (
+        <th
+            style={style}
+            className="border-b border-foreground/30 px-3 py-2 font-semibold"
+        >
             {children}
         </th>
     ),
-    td: ({ children }) => (
-        <td className="border-b border-foreground/10 px-3 py-2 text-foreground/75">
+    td: ({ children, style }) => (
+        <td
+            style={style}
+            className="border-b border-foreground/10 px-3 py-2 text-foreground/75"
+        >
             {children}
         </td>
     ),

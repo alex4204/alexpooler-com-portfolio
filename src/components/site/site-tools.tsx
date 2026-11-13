@@ -59,12 +59,12 @@ const SiteTools = ({
     };
 
     return (
-        <div className="ml-auto flex items-center gap-3">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-3">
             <Button
                 variant="outline"
                 aria-label="Search"
                 aria-keyshortcuts="Control+K Meta+K"
-                className="w-40 justify-start bg-foreground/[0.04] text-foreground/50 sm:w-60"
+                className="max-w-60 min-w-0 flex-1 justify-start bg-foreground/[0.04] text-foreground/50 sm:w-60 sm:flex-none"
                 onPress={() => setIsSearchOpen(true)}
             >
                 <SearchIcon />
@@ -73,7 +73,11 @@ const SiteTools = ({
                     <ModKey /> K
                 </Kbd>
             </Button>
-            <Button variant="accent" onPress={() => setIsAskAiOpen(true)}>
+            <Button
+                variant="accent"
+                aria-label="Ask AI"
+                onPress={() => setIsAskAiOpen(true)}
+            >
                 <SparklesIcon />
                 <span className="hidden sm:inline">Ask AI</span>
             </Button>

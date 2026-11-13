@@ -1,11 +1,12 @@
 name: Alex Pooler
 tagline: Software engineer building multi-tenant SaaS across React, TypeScript,
-    Python, Java and C#.
+    Python, Go, Java and C#.
 role: Software engineer at HighRoads
 location: Newtownards, Northern Ireland
-focus: React, TypeScript, Python, Java, C# and AWS
-education: BSc (Hons) Computing Science, First-Class Honours
+focus: React, TypeScript, Python, Go, Java, C# and AWS
+education: BSc (Hons) Computing Science, First Class Honours
 email: alexpooler03@gmail.com
+url: https://alexpooler.com
 links:
     - label: GitHub
       href: https://github.com/alex4204
@@ -20,6 +21,9 @@ intro: Skilled software engineer with 2.5 years of commercial experience
 outsideWork: Outside of work I enjoy padel, tennis and golf, alongside cars, PC
     hardware, hobbyist programming and exploring developments in artificial
     intelligence.
+siteLinks:
+    - label: View source
+      href: https://github.com/alex4204/alexpooler-com-portfolio
 cv: /alexander-pooler-cv.pdf
 askAiSuggestions:
     - What have you built with React?

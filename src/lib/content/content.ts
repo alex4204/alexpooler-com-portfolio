@@ -142,6 +142,10 @@ const getRelatedEntries = async (entry: Entry) =>
 const skillId = (skill: string) => `skill-${slugify(skill)}`;
 
 /** "Junior Software Engineer at HighRoads", or just the project name. */
+/** Entries that are finished enough to share. Drafts are placeholders. */
+const getPublishedEntries = async () =>
+    (await getAllEntries()).filter((entry) => !entry.draft);
+
 const describeEntry = (entry: Entry) =>
     entry.kind === "project" || !entry.organisation
         ? entry.title
@@ -154,6 +158,7 @@ export {
     getEntriesUsing,
     getEntry,
     getProfile,
+    getPublishedEntries,
     getRelatedEntries,
     getRolesByCompany,
     getSkillGroups,

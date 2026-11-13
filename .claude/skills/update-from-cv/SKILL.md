@@ -38,7 +38,7 @@ Show the user this plan in one message, with all your questions at the end, and 
 - whether a missing entry should be kept or deleted;
 - dates the CV gives only roughly ("Summer 2024") when the schema needs a month;
 - which skill group a new skill belongs in, when none clearly fits;
-- whether a CV project should replace a placeholder page (`draft: true`);
+- whether a CV project is one the site already has under another name, including drafts (`draft: true`) and projects still being built (`inProgress: true`);
 - anything that looks like a mistake on the CV, such as overlapping or reversed dates.
 
 Small, unambiguous updates (a new bullet, a corrected end date) don't need a question. Just list them in the plan.
@@ -51,16 +51,17 @@ Small, unambiguous updates (a new bullet, a corrected end date) don't need a que
 - The `## Highlights` list, which mirrors the CV's bullet points for that entry.
 - Any other section that now contradicts the CV or reads as stale against it, such as a paragraph saying "currently building X" after X finished. Fix just the out-of-date sentence.
 
-Leave everything else alone: sections the CV doesn't cover (such as "The hard part", deep dives or code samples), `order`, `hue`, `label` and `draft`. That writing is the site's value beyond the CV, and nothing in a CV can replace it.
+Leave everything else alone: sections the CV doesn't cover (such as "The hard part", deep dives, code samples or the degree page's `## Modules` tables, which come from the transcript), `order`, `hue`, `label`, `sidebarLabel` and `draft`. Change `inProgress` only when the CV shows a project is finished, and then ask first. That writing is the site's value beyond the CV, and nothing in a CV can replace it.
 
 **New pages.** One file per entry. The filename is the page's URL, so make it a short, lowercase, hyphenated slug of the title, plus a qualifier if titles clash (see `associate-software-engineer-placement.mdx`). Copy the shape of an existing file in the same folder:
 
 - Experience and education: `title`, `organisation`, `location`, `start: "YYYY-MM"`, `end` if it has ended, `summary` (one sentence), `stack`, then a `## Highlights` list from the CV's bullets.
 - Projects have no dates. Use `period` (short free text, such as "Final-year project") and `order` (the next free number, or ask where it should go), plus `summary`, `stack` and `## Highlights`.
+- A project the CV shows as ongoing gets `inProgress: true`, which lists it under "In progress" in the sidebar. Follow the Content rules in `CODING-STANDARDS.md` for these: describe what it will be and the plans for it, not its current state.
 
 **Writing.** Keep the CV's meaning and wording. The bullets are the user's own words, so tidy them, don't embellish them. Use British spelling, and refer to the user by name or not at all, never with guessed pronouns. Never add metrics, claims or technologies the CV doesn't state; that's the one rule that can't bend.
 
-**Profile.** Update `role`, `focus`, `education`, `intro` and `links` only where the CV states them. Never copy a phone number or home address into the site, even if the CV has them. A town or region for `location` is fine.
+**Profile.** Update `tagline`, `role`, `focus`, `education`, `intro` and `links` only where the CV states them. Leave `url`, `siteLinks` and `askAiSuggestions` alone; they're about the site, not the CV. Never copy a phone number or home address into the site, even if the CV has them. A town or region for `location` is fine.
 
 **Skills.** Every item in a `stack` must exist in `content/skills.yaml`, matching exactly. Add new skills to the group they fit, and keep each group's existing order. Don't remove a skill just because the CV no longer lists it; ask.
 
