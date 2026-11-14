@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
 import { MotionProvider } from "@/components/site/motion-provider";
+import { PageScrollbar } from "@/components/site/page-scrollbar";
 import { SidebarNav, SidebarNavList } from "@/components/site/sidebar-nav";
 import { SiteHeader } from "@/components/site/site-header";
 import { getProfile } from "@/lib/content/content";
@@ -45,7 +46,8 @@ const RootLayout = async ({ children }: LayoutProps<"/">) => {
             <body className="min-h-screen">
                 <MotionProvider>
                     <SiteHeader />
-                    <div className="mx-auto flex max-w-[88rem]">
+                    <PageScrollbar />
+                    <div className="mx-auto flex max-w-[88rem] overflow-y-clip">
                         <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r border-foreground/10 px-2 lg:block">
                             <Suspense
                                 fallback={<SidebarNavList groups={navGroups} />}

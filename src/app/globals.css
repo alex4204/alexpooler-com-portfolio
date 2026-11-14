@@ -86,6 +86,22 @@
         @apply font-sans;
     }
 
+    /*
+     * On mouse-driven devices the page's scrollbar is drawn by PageScrollbar
+     * instead, floating over the content. The browser's would take room
+     * that appears and disappears between pages, shifting the layout, and
+     * the header's border can't extend into it. The page scrolls as normal.
+     */
+    @media (pointer: fine) {
+        html {
+            scrollbar-width: none;
+        }
+
+        html::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     body {
         @apply bg-background text-foreground;
     }
