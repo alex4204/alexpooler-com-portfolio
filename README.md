@@ -226,13 +226,14 @@ src/lib/utils/          Small helpers, grouped by area
 src/services/ask-ai/    The model, prompt and rate limits (server only)
 ```
 
-The rules the code follows, such as arrow functions only, named exports at the bottom of each file, and no invented content, are written down in [`CODING-STANDARDS.md`](CODING-STANDARDS.md) and enforced by ESLint where possible.
+The rules the code follows, such as arrow functions only, named exports at the bottom of each file, and no invented content, are written down in [`CODING-STANDARDS.md`](CODING-STANDARDS.md), with this site's specifics in [`PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md), and enforced by ESLint where possible.
 
 ## How it's built
 
 AI coding agents, mainly Claude Code, were used extensively throughout development. The architecture, the technical decisions and the review of every change are Alex's. The repo includes what keeps that workflow consistent:
 
-- [`CODING-STANDARDS.md`](CODING-STANDARDS.md): the standards every change, by a person or an agent, is held to.
+- [`CODING-STANDARDS.md`](CODING-STANDARDS.md): the project-agnostic rules every change, by a person or an agent, is held to.
+- [`PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md): what's specific to this site: its folders, look, content rules and Ask AI.
 - [`AGENTS.md`](AGENTS.md): instructions any coding agent reads first.
 - [`.claude/skills/update-from-cv`](.claude/skills/update-from-cv/SKILL.md): a repeatable workflow that updates the site's content from a new CV. It plans the changes, asks before deleting anything or guessing, never invents facts, checks the build, and commits on a branch.
 

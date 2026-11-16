@@ -7,7 +7,7 @@ description: Updates the portfolio site's content (content/profile.yaml, content
 
 The CV is the source of truth for facts: employers, titles, dates, places, skills and what was done. The site holds the same facts, plus writing the CV doesn't have room for. The job is to bring the site up to date with the CV without losing that extra writing and without adding anything the CV doesn't say.
 
-Read `CODING-STANDARDS.md` (the Content section) and `src/lib/types/content.ts` (the zod schemas every file is checked against) before editing. They're short, and the build fails on anything that breaks them.
+Read `PROJECT-CONTEXT.md` (the Content section) and `src/lib/types/content.ts` (the zod schemas every file is checked against) before editing. They're short, and the build fails on anything that breaks them.
 
 ## 1. Before starting
 
@@ -57,7 +57,7 @@ Leave everything else alone: sections the CV doesn't cover (such as "The hard pa
 
 - Experience and education: `title`, `organisation`, `location`, `start: "YYYY-MM"`, `end` if it has ended, `summary` (one sentence), `stack`, then a `## Highlights` list from the CV's bullets.
 - Projects have no dates. Use `period` (short free text, such as "Final-year project") and `order` (the next free number, or ask where it should go), plus `summary`, `stack` and `## Highlights`.
-- A project the CV shows as ongoing gets `inProgress: true`, which lists it under "In progress" in the sidebar. Follow the Content rules in `CODING-STANDARDS.md` for these: describe what it will be and the plans for it, not its current state.
+- A project the CV shows as ongoing gets `inProgress: true`, which lists it under "In progress" in the sidebar. Follow the Content rules in `PROJECT-CONTEXT.md` for these: describe what it will be and the plans for it, not its current state.
 
 **Writing.** Keep the CV's meaning and wording. The bullets are the user's own words, so tidy them, don't embellish them. Use British spelling, and refer to the user by name or not at all, never with guessed pronouns. Never add metrics, claims or technologies the CV doesn't state; that's the one rule that can't bend.
 

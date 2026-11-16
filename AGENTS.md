@@ -1,6 +1,11 @@
-## Coding standards (required)
+## Read first (required)
 
-**You must read and follow [`CODING-STANDARDS.md`](./CODING-STANDARDS.md) for ANY code change in this repository**, however small: code, content, config, styles or scripts. Read it before you start, and run the checks it lists (`pnpm format`, `pnpm lint`, `pnpm typecheck`, `pnpm build`) before you finish. If a request would break a standard, say so instead of quietly breaking it.
+Before **any** change in this repository, however small (code, content, config, styles or scripts), read and follow:
+
+- [`CODING-STANDARDS.md`](./CODING-STANDARDS.md): the project-agnostic rules.
+- [`PROJECT-CONTEXT.md`](./PROJECT-CONTEXT.md): what's specific to this site, which adds to them.
+
+Run the checks the standards list (`pnpm format`, `pnpm lint`, `pnpm typecheck`, `pnpm build`) before you finish. If a request would break a rule, say so instead of quietly breaking it.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
