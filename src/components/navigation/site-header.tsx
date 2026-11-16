@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { MobileNav } from "@/components/site/mobile-nav";
-import { SiteTools } from "@/components/site/site-tools";
+import { MobileNav } from "@/components/navigation/mobile-nav";
+import { SiteTools } from "@/components/navigation/site-tools";
 import { getProfile } from "@/lib/content/content";
 import { getNavGroups, getSearchItems } from "@/lib/navigation";
 import { initialsOf } from "@/lib/utils/initials";

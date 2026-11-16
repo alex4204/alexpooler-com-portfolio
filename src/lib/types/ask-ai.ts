@@ -42,7 +42,7 @@ type AskAiTools = {
     citeSources: { input: CiteSourcesInput; output: Source[] };
 };
 
-/** One message in an Ask AI conversation, shared by the route and the sheet. */
+/** One message in an Ask AI conversation, shared by the route and the panel. */
 type AskAiMessage = UIMessage<unknown, UIDataTypes, AskAiTools>;
 
 export {

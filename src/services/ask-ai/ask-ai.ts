@@ -26,7 +26,7 @@ import { messageText } from "@/lib/utils/ask-ai/message-text";
 import { getSystemPrompt, resolveSources } from "@/services/ask-ai/prompt";
 
 /*
- * Answers a visitor's question about Alex, streamed to the Ask AI sheet.
+ * Answers a visitor's question about Alex, streamed to the Ask AI panel.
  *
  * Provider-agnostic through the AI SDK: ASK_MODEL picks the model as
  * "provider:model", e.g. "anthropic:claude-sonnet-5-5" or "openai:gpt-…", and

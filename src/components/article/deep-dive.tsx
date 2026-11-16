@@ -3,11 +3,9 @@
 import type { ReactNode } from "react";
 import { ChevronDownIcon } from "lucide-react";
 
-import {
-    Collapsible,
-    CollapsibleContent,
-    CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Collapsible } from "@/components/ui/collapsible/collapsible";
+import { CollapsibleContent } from "@/components/ui/collapsible/collapsible-content";
+import { CollapsibleTrigger } from "@/components/ui/collapsible/collapsible-trigger";
 
 /** Optional detail most readers can skip, folded away until they want it. */
 const DeepDive = ({

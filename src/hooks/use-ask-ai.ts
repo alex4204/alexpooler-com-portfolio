@@ -23,7 +23,7 @@ const fetchWithRetryTime: typeof fetch = async (input, init) => {
     return new Response(`${reason} Try again at ${time}.`, { status: 429 });
 };
 
-/** The Ask AI conversation, shared by the sheet and the search dialog. */
+/** The Ask AI conversation, shared by the panel and the search dialog. */
 const useAskAi = (limits: AskAiLimits) => {
     const transport = useMemo(
         () =>

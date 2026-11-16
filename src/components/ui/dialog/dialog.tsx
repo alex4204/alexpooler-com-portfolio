@@ -1,9 +1,8 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import {
     Dialog as DialogPrimitive,
-    Heading,
     ModalOverlay as ModalOverlayPrimitive,
     Modal as ModalPrimitive,
     type ModalOverlayProps as ModalOverlayPrimitiveProps,
@@ -55,16 +54,4 @@ const Dialog = ({
     </DialogOverlay>
 );
 
-const DialogTitle = ({
-    className,
-    ...props
-}: Omit<ComponentProps<typeof Heading>, "slot">) => (
-    <Heading
-        slot="title"
-        data-slot="dialog-title"
-        className={cn("font-heading text-base font-semibold", className)}
-        {...props}
-    />
-);
-
-export { Dialog, DialogTitle };
+export { Dialog };

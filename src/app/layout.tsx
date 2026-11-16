@@ -2,10 +2,13 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Source_Serif_4 } from "next/font/google";
 
-import { MotionProvider } from "@/components/site/motion-provider";
+import { MotionProvider } from "@/components/providers/motion-provider";
 import { PageScrollbar } from "@/components/site/page-scrollbar";
-import { SidebarNav, SidebarNavList } from "@/components/site/sidebar-nav";
-import { SiteHeader } from "@/components/site/site-header";
+import {
+    SidebarNav,
+    SidebarNavList,
+} from "@/components/navigation/sidebar-nav";
+import { SiteHeader } from "@/components/navigation/site-header";
 import { getProfile } from "@/lib/content/content";
 import { getPageMetadata } from "@/lib/site-metadata/page-metadata";
 import { getNavGroups } from "@/lib/navigation";

@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { DownloadIcon, SearchIcon, SparklesIcon } from "lucide-react";
 
-import { AskAiSheet } from "@/components/site/ask-ai-sheet";
+import { AskAiPanel } from "@/components/ask-ai/ask-ai-panel";
 import { ModKey } from "@/components/site/mod-key";
-import { SearchDialog } from "@/components/site/search-dialog";
+import { SearchDialog } from "@/components/command-k/search-dialog";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { Button, LinkButton } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
@@ -100,7 +100,7 @@ const SiteTools = ({
                 onOpenChange={setIsSearchOpen}
                 onAsk={askFromSearch}
             />
-            <AskAiSheet
+            <AskAiPanel
                 open={isAskAiOpen}
                 onOpenChange={setIsAskAiOpen}
                 askAi={askAi}

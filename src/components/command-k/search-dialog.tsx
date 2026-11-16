@@ -4,15 +4,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SparklesIcon } from "lucide-react";
 
-import {
-    Command,
-    CommandDialog,
-    CommandEmpty,
-    CommandGroup,
-    CommandInput,
-    CommandItem,
-    CommandList,
-} from "@/components/ui/command";
+import { CommandK } from "@/components/command-k/command-k";
+import { CommandKDialog } from "@/components/command-k/command-k-dialog";
+import { CommandKEmpty } from "@/components/command-k/command-k-empty";
+import { CommandKGroup } from "@/components/command-k/command-k-group";
+import { CommandKInput } from "@/components/command-k/command-k-input";
+import { CommandKItem } from "@/components/command-k/command-k-item";
+import { CommandKList } from "@/components/command-k/command-k-list";
 import type { SearchItem } from "@/lib/types/navigation";
 
 type SearchDialogProps = {
@@ -57,23 +55,23 @@ const SearchDialog = ({
     };
 
     return (
-        <CommandDialog
+        <CommandKDialog
             title="Search"
             open={open}
             onOpenChange={handleOpenChange}
         >
-            <Command inputValue={query} onInputChange={setQuery}>
-                <CommandInput placeholder="Search projects, roles, skills…" />
-                <CommandList
+            <CommandK inputValue={query} onInputChange={setQuery}>
+                <CommandKInput placeholder="Search projects, roles, skills…" />
+                <CommandKList
                     aria-label="Results"
                     renderEmptyState={() => (
-                        <CommandEmpty>No results</CommandEmpty>
+                        <CommandKEmpty>No results</CommandKEmpty>
                     )}
                 >
                     {groups.map((group) => (
-                        <CommandGroup key={group.name} heading={group.name}>
+                        <CommandKGroup key={group.name} heading={group.name}>
                             {group.items.map((item) => (
-                                <CommandItem
+                                <CommandKItem
                                     key={item.href}
                                     id={item.href}
                                     textValue={`${item.label} ${item.group} ${item.keywords}`}
@@ -83,14 +81,14 @@ const SearchDialog = ({
                                     <span className="text-xs text-foreground/40">
                                         {item.group}
                                     </span>
-                                </CommandItem>
+                                </CommandKItem>
                             ))}
-                        </CommandGroup>
+                        </CommandKGroup>
                     ))}
                     {trimmed && (
                         // Its text is the query itself, so the filter always keeps it.
-                        <CommandGroup heading="Not finding it?">
-                            <CommandItem
+                        <CommandKGroup heading="Not finding it?">
+                            <CommandKItem
                                 id="ask-ai"
                                 textValue={query}
                                 onAction={ask}
@@ -102,12 +100,12 @@ const SearchDialog = ({
                                 <span className="text-xs text-foreground/40">
                                     Answer from this site
                                 </span>
-                            </CommandItem>
-                        </CommandGroup>
+                            </CommandKItem>
+                        </CommandKGroup>
                     )}
-                </CommandList>
-            </Command>
-        </CommandDialog>
+                </CommandKList>
+            </CommandK>
+        </CommandKDialog>
     );
 };
 

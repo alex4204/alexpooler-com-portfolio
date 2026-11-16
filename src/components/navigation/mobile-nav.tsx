@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { MenuIcon } from "lucide-react";
 
-import { SidebarNav } from "@/components/site/sidebar-nav";
+import { SidebarNav } from "@/components/navigation/sidebar-nav";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Panel } from "@/components/ui/panel/panel";
+import { PanelHeader } from "@/components/ui/panel/panel-header";
+import { PanelTitle } from "@/components/ui/panel/panel-title";
 import type { NavGroup } from "@/lib/types/navigation";
 
 const MobileNav = ({ groups }: { groups: NavGroup[] }) => {
@@ -22,10 +24,10 @@ const MobileNav = ({ groups }: { groups: NavGroup[] }) => {
             >
                 <MenuIcon />
             </Button>
-            <Sheet side="left" isOpen={isOpen} onOpenChange={setIsOpen}>
-                <SheetHeader>
-                    <SheetTitle>Menu</SheetTitle>
-                </SheetHeader>
+            <Panel side="left" isOpen={isOpen} onOpenChange={setIsOpen}>
+                <PanelHeader>
+                    <PanelTitle>Menu</PanelTitle>
+                </PanelHeader>
                 <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-2">
                     <SidebarNav
                         groups={groups}
@@ -33,7 +35,7 @@ const MobileNav = ({ groups }: { groups: NavGroup[] }) => {
                         onNavigate={() => setIsOpen(false)}
                     />
                 </div>
-            </Sheet>
+            </Panel>
         </>
     );
 };
