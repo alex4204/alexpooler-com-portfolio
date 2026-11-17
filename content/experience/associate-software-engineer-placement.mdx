@@ -5,7 +5,7 @@ organisation: HighRoads
 location: Belfast
 start: "2024-06"
 end: "2025-09"
-summary: Independently built a Next.js tenant management dashboard that cut tenant setup from multiple weeks or sprints to around one sprint or less.
+summary: Independently architected and built a Next.js tenant management dashboard that helped cut tenant setup from multiple sprints to one sprint or less.
 stack:
     - Next.js
     - React
@@ -25,9 +25,9 @@ stack:
 
 ## Highlights
 
-- Independently designed and developed a Next.js tenant management dashboard, integrating existing Python AWS Lambda provisioning services and reducing tenant setup from a process spanning multiple weeks or sprints to approximately one sprint or less.
-- Containerised and deployed the dashboard to AWS ECS using Docker and ECR, configuring ECS task definitions, modifying CloudFormation infrastructure and extensively adapting existing CodeBuild and CodePipeline workflows.
+- Migrated the main customer-facing React application from Create React App (CRA) to Rsbuild with two other engineers, owning the dev-server proxy, environment variable handling, SVG rendering and replacement of legacy plugins. Cut build times from over a minute to around five seconds, saving time on every build and speeding up delivery to the development environment.
+- Independently architected and built an internal Next.js tenant management dashboard, planning the full ticket breakdown, integrating existing Python AWS Lambda provisioning services, shipping early versions and continuously extending it. Helped reduce tenant setup from multiple sprints to one sprint or less, and it has been used to set up 3+ live tenants.
+- Containerised and deployed the dashboard to AWS ECS using Docker and ECR, configuring ECS task definitions, modifying CloudFormation infrastructure and extensively adapting the existing CodeBuild and CodePipeline delivery workflows.
 - Implemented authentication for the dashboard using Amazon Cognito, integrating SSO through SAML federation and OIDC to enable secure access for internal users.
 - Implemented reusable role-based route authorisation across the main customer-facing React application, centralising permissions and feature-flag checks within the authentication context.
-- Collaborated with two engineers on migrating the main customer-facing React application from Create React App/Webpack to Rsbuild/Rspack, reducing build times from over a minute to approximately five seconds.
 - Developed C# backend functionality for multi-plan healthcare benefit calculations and investigated defects across existing application and backend services.

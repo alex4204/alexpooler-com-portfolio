@@ -15,6 +15,9 @@
       - Redux
       - Vite
       - Rsbuild/Rspack
+      - Webpack
+      - CUBE CSS
+      - Storybook
 - name: "Backend & Cloud"
   skills:
       - ASP.NET Core
@@ -54,6 +57,7 @@
       - Tailwind CSS
       - Redis
       - Cloudflare
+      - shadcn/ui
 - name: AI
   skills:
       - LLM Integration
@@ -62,3 +66,5 @@
       - Facial Recognition
       - AI SDK (Vercel)
       - ElevenLabs
+      - Kiro
+      - Claude Code
