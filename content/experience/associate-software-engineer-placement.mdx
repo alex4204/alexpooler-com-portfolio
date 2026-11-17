@@ -27,7 +27,7 @@ stack:
 
 - Migrated the main customer-facing React application from Create React App (CRA) to Rsbuild with two other engineers, owning the dev-server proxy, environment variable handling, SVG rendering and replacement of legacy plugins. Cut build times from over a minute to around five seconds, saving time on every build and speeding up delivery to the development environment.
 - Independently architected and built an internal Next.js tenant management dashboard, planning the full ticket breakdown, integrating existing Python AWS Lambda provisioning services, shipping early versions and continuously extending it. Helped reduce tenant setup from multiple sprints to one sprint or less, and it has been used to set up 3+ live tenants.
-- Containerised and deployed the dashboard to AWS ECS using Docker and ECR, configuring ECS task definitions, modifying CloudFormation infrastructure and extensively adapting the existing CodeBuild and CodePipeline delivery workflows.
+- Containerised the dashboard with Docker and worked with the DevOps team on its deployment to AWS ECS (ECR, CloudFormation, CodeBuild/CodePipeline).
 - Implemented authentication for the dashboard using Amazon Cognito, integrating SSO through SAML federation and OIDC to enable secure access for internal users.
 - Implemented reusable role-based route authorisation across the main customer-facing React application, centralising permissions and feature-flag checks within the authentication context.
 - Developed C# backend functionality for multi-plan healthcare benefit calculations and investigated defects across existing application and backend services.
