@@ -8,6 +8,7 @@ stack:
     - React
     - TypeScript
     - React Aria
+    - shadcn/ui
     - Tailwind CSS
     - AI SDK (Vercel)
     - Redis
@@ -18,21 +19,25 @@ stack:
     - LLM Integration
     - Prompt Engineering
     - Agentic AI
+    - Claude Code
 links:
     - label: Source code
       href: https://github.com/alex4204/alexpooler-com-portfolio
 hue: 210
 ---
 
-## What I built
+## Highlights
 
-- A Next.js and TypeScript site whose pages are written as MDX and YAML, validated at build time and prerendered, so pages are served without running any code per request.
-- Ask AI, an assistant built with Vercel's AI SDK that answers questions using only the site's content and links the pages it used. It works with Anthropic, OpenAI or Google models, chosen by configuration.
-- Rate limiting for Ask AI in Redis, per visitor and with a daily token budget for the whole site. If Redis is unavailable, Ask AI switches off rather than running without limits.
+- A responsive, accessible, open-source Next.js and TypeScript site built with React Aria, shadcn/ui and Tailwind CSS, with Lighthouse scores of 97–100 for performance, 96 for accessibility and 100 for best practices and SEO.
+- Pages are written as MDX and YAML, validated at build time and prerendered, so they are served without running any code per request. Only Ask AI is handled by a server route.
+- Ask AI, an assistant built with Vercel's AI SDK that answers questions using only the site's content and cites the pages it used through a typed tool. It works with Anthropic, OpenAI or Google models, chosen by configuration.
+- Ask AI treats every request as hostile. It is rate limited in Redis with a sliding window per visitor, one answer at a time and a daily token budget for the whole site. If Redis is unavailable, Ask AI switches off rather than running without limits.
+- Built for search engines and AI tools, with canonical URLs, generated link-preview images, schema.org structured data and `/llms.txt`, all produced from the same validated content, plus security headers including HSTS and a Content Security Policy.
+- A Claude Code skill, `update-from-cv`, that syncs the site's content from a new CV: it compares the CV with every content file, confirms a plan with the user, checks the build and commits on a new branch with an optional pull request.
 
 ## How it runs
 
-- Every push to `main` is checked and built by GitHub Actions, which publishes an arm64 Docker image.
+- Every push to `main` is checked (ESLint and type checks) and built by GitHub Actions, which publishes a native arm64 Docker image tagged by commit, so rolling back is easy.
 - The site runs on a Raspberry Pi behind a Cloudflare Tunnel, so the Pi has no open ports. New images are picked up and deployed automatically.
 
 The [source code](https://github.com/alex4204/alexpooler-com-portfolio) has the full details and the reasoning behind each choice.

@@ -3,20 +3,29 @@ title: Junior Software Engineer
 organisation: HighRoads
 location: Belfast (Remote)
 start: "2026-08"
-summary: Building a shared React Aria component library and continuing the Next.js tenant management dashboard I started on placement.
+summary: Building a shared React Aria component library and continuing the Next.js tenant management dashboard started on placement.
 stack:
     - React
     - React Aria
     - Next.js
     - TypeScript
+    - PostgreSQL
+    - CUBE CSS
+    - Storybook
+    - LLM Integration
     - Agentic AI
+    - Kiro
+    - Claude Code
 ---
 
 ## Highlights
 
-- Designed and developed a shared React component library using React Aria, establishing accessible, reusable components to replace an existing Salesforce-based design system, with adoption underway in the main customer-facing application.
-- Continued developing the Next.js tenant management dashboard originally built during my placement, adding database integration and auditing functionality for tenant creation and teardown operations.
-- Investigated and resolved complex data-model inconsistencies affecting plan management workflows, implementing coordinated changes across backend services, shared libraries and database migrations.
-- Collaborated with the US-based product team and Belfast-based engineers across time zones to deliver customer-facing features across React/TypeScript applications and backend services.
-- Extensively used agentic AI in daily development (Kiro and Claude Code), including purpose-built agents for Jira ticket implementation and code reviews.
+- Designed and developed a shared, accessible React component library (React Aria, CUBE CSS) with 46 components and 152 Storybook stories in an npm workspaces monorepo, replacing every Salesforce component in use or providing a new equivalent, with adoption underway in the main customer-facing application.
+- Built theming into the component library, a first for the product (light, dark and custom per-tenant themes via a `ThemeProvider` and `useTheme` hook), and demoed it to the whole product team.
+- Continued developing the Next.js tenant management dashboard originally built during the placement, adding PostgreSQL persistence and audit logging for tenant creation and teardown in the Next.js backend.
+- Took ownership of long-standing data cleanup, fixing years-old inconsistent plan management data through coordinated changes across 3 backend repositories, including shared libraries and PostgreSQL migrations.
+- Worked across time zones with the US-based product team, regularly contributing product, UX and developer-experience improvements in and outside product calls, and stepping in on urgent blocker bugs.
+- Delivered AI-powered search features, building frontend integrations with an internal LLM service that generates search queries for the platform's search, and configured new tenants within the LLM service.
+- Used agentic AI tools (Kiro, Claude Code) daily, including the team's agents for Jira ticket implementation and code review, and wrote Kiro steering files (Markdown) giving agents context on the component library and its conventions.
+- Wrote in-depth documentation for major features, the design system and the tenant management dashboard, and adopted pnpm for the dashboard for faster installs and proposed migrating the main UI from npm to pnpm.
 - Reviewed and merged colleagues' pull requests collaboratively, to maintain code quality and consistency.

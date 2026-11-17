@@ -16,9 +16,9 @@ stack:
 hue: 90
 ---
 
-## What I'm building
+## What's being built
 
-- **A Go API** built on the router package I wrote for [Adsum](/projects/adsum), with cross-origin protection on every route.
+- **A Go API** built on the router package written for [Adsum](/projects/adsum), with cross-origin protection on every route.
 - **An ingestion pipeline** that collects listings from retailers' official product feeds. Each retailer has its own adaptor that maps its feed into one shared product format, so adding a retailer doesn't change the rest of the pipeline.
 - **Strict validation** as listings come in. Prices are handled as whole pennies or cents, never floating point, and listings in pounds and euros are kept separate rather than converted.
 - **Product matching** that recognises the same product across different shops, so its prices can be compared side by side, with listings stored in PostgreSQL. More advanced matching and pricing algorithms will build on this over time.
